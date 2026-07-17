@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتيجة الثانوية العامة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- رسالة البداية -->
+    <div class="top-banner">
+        <p>اكتب الكود هنا يا حبيبي</p>
+    </div>
+
+    <!-- قسم البحث برقم الجلوس -->
+    <header class="hero section">
+        <div class="search-container">
+            <h1>بوابة نتائج الثانوية العامة</h1>
+            <p>أدخل رقم الجلوس لمعرفة النتيجة</p>
+            <div class="input-group">
+                <input type="text" id="seatNumber" placeholder="رقم الجلوس (مثال: 265948)">
+                <button onclick="checkResult()">عرض النتيجة</button>
+            </div>
+            <p id="error-msg" class="error-msg"></p>
+        </div>
+    </header>
+
+    <!-- القسم المخفي الذي يظهر بعد إدخال النتيجة -->
+    <main id="resultArea" class="hidden">
+        
+        <!-- قسم النتيجة والكليات -->
+        <section class="result-section animate-on-scroll">
+            <div class="card result-card">
+                <h2>النتيجة النهائية</h2>
+                <div class="percentage">67%</div>
+                
+                <div class="colleges">
+                    <h3>الكليات المتاحة للتنسيق:</h3>
+                    <ul>
+                        <li>كلية الطب</li>
+                        <li>كلية الهندسة</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم معلومات الطالب -->
+        <section class="info-section animate-on-scroll">
+            <div class="card info-card">
+                <h2>معلومات الطالب</h2>
+                <div class="student-profile">
+                    <img src="1000050421.jpg" alt="صورة يوسف" class="profile-img">
+                    <div class="student-details">
+                        <p><strong>الاسم:</strong> يوسف عاطف سعد فهمي</p>
+                        <p><strong>تاريخ الميلاد:</strong> 21/12/2007</p>
+                        <p><strong>الديانة:</strong> مسيحي</p>
+                        <p><strong>محل السكن:</strong> شبرا مصر، شارع شوكولاني</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم ألبوم الصور والفيديو -->
+        <section class="media-section animate-on-scroll">
+            <div class="card media-card">
+                <h2>ألبوم الصور والذكريات</h2>
+                <div class="gallery">
+                    <figure>
+                        <img src="IMG-20260203-WA0014.jpg" alt="صورة الاستمارة">
+                        <figcaption>صورة الاستمارة</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="IMG-20260221-WA0003.jpg" alt="في الكنيسة">
+                        <figcaption>أثناء تواجده في الكنيسة</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="IMG-20260321-WA0030.jpg" alt="يوسف وعمر">
+                        <figcaption>صورة عفوية ليوسف وعمر</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="teacher.jpg" alt="مدرس الدراسات">
+                        <figcaption>يوسف مع مدرس الدراسات (عادل رياض)</figcaption>
+                    </figure>
+                </div>
+
+                <div class="video-container">
+                    <h3>يوسف وهو يرقص</h3>
+                    <video src="VID-20260415-WA0006.mp4" controls muted autoplay loop playsinline></video>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
