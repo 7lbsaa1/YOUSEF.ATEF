@@ -1,45 +1,27 @@
-// دالة التحقق من رقم الجلوس وعرض النتيجة
-function checkResult() {
-    const seatNumber = document.getElementById('seatNumber').value;
-    const errorMsg = document.getElementById('error-msg');
-    const resultArea = document.getElementById('resultArea');
-    const heroSection = document.querySelector('.hero');
+document.addEventListener("DOMContentLoaded", function() {
+    // تحديد جميع العناصر التي تحتوي على كلاس scroll-anim
+    const animatedSections = document.querySelectorAll('.scroll-anim');
 
-    if (seatNumber === "265948") {
-        // إخفاء رسالة الخطأ إن وجدت
-        errorMsg.innerText = "";
-        
-        // تقليل حجم قسم البحث
-        heroSection.style.height = "30vh";
-        heroSection.style.transition = "height 0.5s ease";
-        
-        // إظهار قسم النتيجة
-        resultArea.classList.remove('hidden');
-        
-        // تفعيل الأنيميشن للعناصر الظاهرة فوراً
-        setTimeout(initScrollAnimations, 100);
-        
-        // التمرير التلقائي للأسفل قليلاً
-        window.scrollBy({ top: 300, behavior: 'smooth' });
+    // إعداد الـ Intersection Observer
+    const observerOptions = {
+        root: null, // مراقبة بناءً على نافذة العرض (Viewport)
+        threshold: 0.2, // تشغيل الأنيميشن عندما يظهر 20% من العنصر
+        rootMargin: "0px"
+    };
 
-    } else {
-        errorMsg.innerText = "رقم الجلوس غير صحيح. الرجاء التأكد من الرقم (265948).";
-        resultArea.classList.add('hidden');
-        heroSection.style.height = "60vh";
-    }
-}
-
-// دالة تفعيل الأنيميشن عند التمرير (Scroll) باستخدام Intersection Observer
-function initScrollAnimations() {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    
-    const observer = new IntersectionObserver((entries) => {
+    const sectionObserver = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
+            // إذا كان العنصر مرئياً على الشاشة
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('show');
+                // إيقاف مراقبة العنصر بعد ظهوره لمرة واحدة
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 }); // يظهر العنصر عندما يظهر 10% منه على الشاشة
+    }, observerOptions);
 
-    elements.forEach(el => observer.observe(el));
-}
+    // تطبيق المراقب على كل قسم
+    animatedSections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+});
