@@ -4,94 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نتيجة الثانوية العامة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- رسالة البداية -->
-    <div class="top-banner">
-        <p>اكتب الكود هنا يا عرص</p>
-    </div>
-
-    <!-- قسم البحث برقم الجلوس -->
-    <header class="hero section">
-        <div class="search-container">
-            <h1>بوابة نتائج الثانوية العامة</h1>
-            <p>أدخل رقم الجلوس لمعرفة النتيجة</p>
-            <div class="input-group">
-                <input type="text" id="seatNumber" placeholder="رقم الجلوس (مثال: 266148)">
-                <button onclick="checkResult()">عرض النتيجة</button>
-            </div>
-            <p id="error-msg" class="error-msg"></p>
-        </div>
+    <header>
+        <div class="top-bar">اكتب الكود هنا يا عرص</div>
     </header>
 
-    <!-- القسم المخفي الذي يظهر بعد إدخال النتيجة -->
-    <main id="resultArea" class="hidden">
-        
-        <!-- قسم النتيجة والكليات -->
-        <section class="result-section animate-on-scroll">
-            <div class="card result-card">
-                <h2>النتيجة النهائية</h2>
-                <div class="percentage">67%</div>
-                
-                <div class="colleges">
-                    <h3>الكليات المتاحة للتنسيق:</h3>
-                    <ul>
-                        <li>كلية مص ازبار</li>
-                        <li>كلية طشف اكساس</li>
-                    </ul>
-                </div>
+    <!-- قسم النتيجة -->
+    <section class="hero scroll-anim">
+        <div class="glass-card result-card">
+            <h2>نتيجة الثانوية العامة</h2>
+            <p class="seat-number">رقم الجلوس: <span>111111</span></p>
+            <div class="percentage">
+                <h1>67%</h1>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- قسم معلومات الطالب -->
-        <section class="info-section animate-on-scroll">
-            <div class="card info-card">
-                <h2>معلومات الطالب</h2>
-                <div class="student-profile">
-                    <img src="1000050421.jpg" alt="صورة يوسف" class="profile-img">
-                    <div class="student-details">
-                        <p><strong>الاسم:</strong> يوسف عاطف سعد فهمي</p>
-                        <p><strong>تاريخ الميلاد:</strong> 21/12/2007</p>
-                        <p><strong>الديانة:</strong> مسيحي</p>
-                        <p><strong>محل السكن:</strong> شبرا مصر، شارع شوكولاني</p>
-                    </div>
-                </div>
+    <!-- قسم الكليات المتاحة -->
+    <section class="colleges scroll-anim">
+        <h2>الكليات المتاحة</h2>
+        <div class="cards-container">
+            <div class="glass-card college-card">
+                <h3>🩺 كلية مص ازبار</h3>
             </div>
-        </section>
-
-        <!-- قسم ألبوم الصور والفيديو -->
-        <section class="media-section animate-on-scroll">
-            <div class="card media-card">
-                <h2>ألبوم الصور والذكريات</h2>
-                <div class="gallery">
-                    <figure>
-                        <img src="IMG-20260203-WA0014.jpg" alt="صورة الاستمارة">
-                        <figcaption>صورة الاستمارة</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="IMG-20260221-WA0003.jpg" alt="في الكنيسة">
-                        <figcaption>أثناء تواجده في الكنيسة</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="IMG-20260321-WA0030.jpg" alt="يوسف وعمر">
-                        <figcaption>صورة عفوية ليوسف وعمر</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="teacher.jpg" alt="مدرس الدراسات">
-                        <figcaption>يوسف مع مدرس الدراسات (عادل رياض)</figcaption>
-                    </figure>
-                </div>
-
-                <div class="video-container">
-                    <h3>يوسف وهو يرقص</h3>
-                    <video src="VID-20260415-WA0006.mp4" controls muted autoplay loop playsinline></video>
-                </div>
+            <div class="glass-card college-card">
+                <h3>⚙️ كلية شطف اكساس</h3>
             </div>
-        </section>
-        
-    </main>
+        </div>
+    </section>
+
+    <!-- قسم معلومات الصفحة -->
+    <section class="profile scroll-anim">
+        <h2>معلومات الطالب</h2>
+        <div class="glass-card profile-card">
+            <div class="profile-img">
+                <img src="1000050421.jpg" alt="يوسف عاطف">
+            </div>
+            <ul class="info-list">
+                <li><strong>الاسم:</strong> يوسف عاطف سعد فهمي</li>
+                <li><strong>تاريخ الميلاد:</strong> 21/12/2007</li>
+                <li><strong>الديانة:</strong> مسيحي</li>
+                <li><strong>محل السكن:</strong> شبرا مصر شارع شوكولاني</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- قسم الذكريات والصور والفيديو -->
+    <section class="gallery scroll-anim">
+        <h2>ذكريات ولحظات بضينية </h2>
+        <div class="media-grid">
+            
+            <div class="media-item">
+                <img src="IMG-20260203-WA0014.jpg" alt="صورة الاستمارة">
+                <div class="overlay">صورة الاستمارة</div>
+            </div>
+
+            <div class="media-item">
+                <img src="IMG-20260221-WA0003.jpg" alt="في الكنيسة">
+                <div class="overlay">أثناء تواجده في الكنيسة</div>
+            </div>
+
+            <div class="media-item">
+                <img src="IMG-20260321-WA0030.jpg" alt="يوسف وعمر">
+                <div class="overlay">صورة عفوية ليوسف وعمر</div>
+            </div>
+
+            <!-- صورة المدرس (يمكنك تعديل مسار الصورة عند توفرها) -->
+            <div class="media-item">
+                <div class="placeholder-img">صورة عادل رياض</div>
+                <div class="overlay">يوسف مع مدرس الدراسات (عادل رياض)</div>
+            </div>
+
+            <div class="media-item video-item">
+                <video src="VID-20260415-WA0006.mp4" autoplay loop muted playsinline></video>
+                <div class="overlay">يوسف وهو يرقص</div>
+            </div>
+
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
