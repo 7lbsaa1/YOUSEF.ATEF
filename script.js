@@ -1,27 +1,43 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // تحديد جميع العناصر التي تحتوي على كلاس scroll-anim
-    const animatedSections = document.querySelectorAll('.scroll-anim');
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. منطق إظهار النتيجة والكليات
+    const showResultBtn = document.getElementById("showResultBtn");
+    const resultArea = document.getElementById("resultArea");
 
-    // إعداد الـ Intersection Observer
-    const observerOptions = {
-        root: null, // مراقبة بناءً على نافذة العرض (Viewport)
-        threshold: 0.2, // تشغيل الأنيميشن عندما يظهر 20% من العنصر
-        rootMargin: "0px"
+    showResultBtn.addEventListener("click", () => {
+        // إزالة الكلاس الذي يخفي العنصر ليتم عرضه مع تأثيرات الـ CSS
+        resultArea.classList.remove("hidden");
+        // تغيير نص الزر أو إخفائه حسب الرغبة
+        showResultBtn.style.display = "none";
+    });
+
+    // 2. منطق الحركات والـ Animations أثناء السكرول (Intersection Observer)
+    const scrollElements = document.querySelectorAll(".animate-on-scroll");
+
+    const elementInView = (el, dividend = 1) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+        );
     };
 
-    const sectionObserver = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            // إذا كان العنصر مرئياً على الشاشة
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                // إيقاف مراقبة العنصر بعد ظهوره لمرة واحدة
-                observer.unobserve(entry.target);
+    const displayScrollElement = (element) => {
+        element.classList.add("show");
+    };
+
+    const handleScrollAnimation = () => {
+        scrollElements.forEach((el) => {
+            if (elementInView(el, 1.25)) {
+                displayScrollElement(el);
             }
         });
-    }, observerOptions);
+    };
 
-    // تطبيق المراقب على كل قسم
-    animatedSections.forEach(section => {
-        sectionObserver.observe(section);
+    // تشغيل الدالة مرة عند فتح الموقع لاكتشاف العناصر المرئية في البداية
+    handleScrollAnimation();
+
+    // تشغيل الدالة مع كل حركة سكرول
+    window.addEventListener("scroll", () => {
+        handleScrollAnimation();
     });
 });
